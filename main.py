@@ -91,7 +91,7 @@ Cohort_39.add_student(Brant)
 Joe = Instructor()
 Joe.first_name = "Joe"
 Joe.last_name = "Shepherd"
-Joe.slack_handle "JoeShep"
+Joe.slack_handle = "JoeShep"
 Joe.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Joe.specialty = "Python"
 Cohort_36.add_instructor(Joe)
@@ -99,7 +99,7 @@ Cohort_36.add_instructor(Joe)
 Jisie = Instructor()
 Jisie.first_name = "Jisie"
 Jisie.last_name = "David"
-Jisie.slack_handle "JisieD"
+Jisie.slack_handle = "JisieD"
 Jisie.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Jisie.specialty = "Javascript"
 Cohort_36.add_instructor(Jisie)
@@ -108,11 +108,56 @@ Cohort_36.add_instructor(Jisie)
 Rose = Instructor()
 Rose.first_name = "Rose"
 Rose.last_name = "W"
-Rose.slack_handle "RoseW"
+Rose.slack_handle = "RoseW"
 Rose.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Rose.specialty = "Javascript"
 Cohort_36.add_instructor(Rose)
 
 # Have each instructor assign 2 exercises to each of the students.
+Rose.assign_student_exercise(Cori, MonkeyChicken)
+Rose.assign_student_exercise(Cori, Cash_to_Coins)
+Rose.assign_student_exercise(Christian, MonkeyChicken)
+Rose.assign_student_exercise(Christian, Cash_to_Coins)
+Rose.assign_student_exercise(Michelle, Cash_to_Coins)
+Rose.assign_student_exercise(Michelle, MonkeyChicken)
+Rose.assign_student_exercise(Matthew, Cash_to_Coins)
+Rose.assign_student_exercise(Matthew, MonkeyChicken)
+Rose.assign_student_exercise(Brant, Cash_to_Coins)
+Rose.assign_student_exercise(Brant, MonkeyChicken)
 
 
+Jisie.assign_student_exercise(Cori, Urban_Planner)
+Jisie.assign_student_exercise(Cori, Coins_to_Cash)
+Jisie.assign_student_exercise(Christian, Urban_Planner)
+Jisie.assign_student_exercise(Christian, Coins_to_Cash)
+Jisie.assign_student_exercise(Michelle, Coins_to_Cash)
+Jisie.assign_student_exercise(Michelle, Urban_Planner)
+Jisie.assign_student_exercise(Matthew, Coins_to_Cash)
+Jisie.assign_student_exercise(Matthew, Urban_Planner)
+Jisie.assign_student_exercise(Brant, Coins_to_Cash)
+Jisie.assign_student_exercise(Brant, Urban_Planner)
+
+Joe.assign_student_exercise(Cori, Urban_Planner)
+Joe.assign_student_exercise(Cori, MonkeyChicken)
+Joe.assign_student_exercise(Christian, Urban_Planner)
+Joe.assign_student_exercise(Christian, MonkeyChicken)
+Joe.assign_student_exercise(Michelle, MonkeyChicken)
+Joe.assign_student_exercise(Michelle, Urban_Planner)
+Joe.assign_student_exercise(Matthew, MonkeyChicken)
+Joe.assign_student_exercise(Matthew, Urban_Planner)
+Joe.assign_student_exercise(Brant, MonkeyChicken)
+Joe.assign_student_exercise(Brant, Urban_Planner)
+
+exercises = [Cash_to_Coins, MonkeyChicken, Coins_to_Cash, Urban_Planner]
+students = [Cori, Christian, Matthew, Michelle, Brant]
+
+
+for student in students:
+    exercise_string = ""
+   
+    student_exercise = list(dict.fromkeys(student.exercise)) # removes duplicates from list
+    for exercise in student_exercise[:-1]:
+                # loops over the exercises list and puts all of them into a sentence except for the last one which will be accessed with student_exercise[-1].exercise_name
+
+        exercise_string += f"{exercise.exercise_name}, "
+    print(f"{student.first_name} is working on {exercise_string}and {student_exercise[-1].exercise_name}.")

@@ -15,4 +15,4 @@ class Student:
         self.last_name = ""
         self.slack_handle = ""
         self.cohort = ""
-        self.exercises = []
+        self.exercise = []
