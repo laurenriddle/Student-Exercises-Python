@@ -10,3 +10,8 @@ class Cohort:
         self.name = ""
         self.students = []
         self.instructors = []
+
+    def add_student(self, name):
+        self.students.append(name)
+    def add_instructor(self, name):
+        self.instructors.append(name)
