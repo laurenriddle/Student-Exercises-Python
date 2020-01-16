@@ -113,3 +113,6 @@ Rose.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Rose.specialty = "Javascript"
 Cohort_36.add_instructor(Rose)
 
+# Have each instructor assign 2 exercises to each of the students.
+
+
