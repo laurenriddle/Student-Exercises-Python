@@ -9,10 +9,8 @@ The student's cohort
 The collection of exercises that the student is currently working on
 
 '''
-class Student: 
-    def __init__(self):
-        self.first_name = ""
-        self.last_name = ""
-        self.slack_handle = ""
-        self.cohort = ""
+from nssperson import NSSPerson
+class Student(NSSPerson): 
+    def __init__(self, first, last, handle, cohort):
+        super().__init__(first, last, handle, cohort)
         self.exercise = []

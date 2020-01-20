@@ -49,68 +49,68 @@ Cohort_39.name = "C39 - The second most awesome cohort in the history of cohorts
 
 # Create 4, or more, students and assign them to one of the cohorts.
 
-Cori = Student()
-Cori.first_name = "Cori"
-Cori.last_name = "Golden"
-Cori.slack_handle = "Cori G."
-Cori.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+Cori = Student("Cori", "Golden", "Cori G.", "C36 - The most awesome cohort in the history of cohorts!", )
+# Cori.first_name = "Cori"
+# Cori.last_name = "Golden"
+# Cori.slack_handle = "Cori G."
+# Cori.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Cohort_36.add_student(Cori)
 
-Christian = Student()
-Christian.first_name = "Christian"
-Christian.last_name = "Pippin"
-Christian.slack_handle = "Christian P."
-Christian.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+Christian = Student("Christian", "Pippin", "Christian P.", "C36 - The most awesome cohort in the history of cohorts!")
+# Christian.first_name = "Christian"
+# Christian.last_name = "Pippin"
+# Christian.slack_handle = "Christian P."
+# Christian.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Cohort_36.add_student(Christian)
 
-Michelle = Student()
-Michelle.first_name = "Michelle"
-Michelle.last_name = "Johnson"
-Michelle.slack_handle = "Michelle J."
-Michelle.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+Michelle = Student("Michelle", "Johnson", "Michelle J.", "C36 - The most awesome cohort in the history of cohorts!")
+# Michelle.first_name = "Michelle"
+# Michelle.last_name = "Johnson"
+# Michelle.slack_handle = "Michelle J."
+# Michelle.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Cohort_36.add_student(Michelle)
 
-Matthew = Student()
-Matthew.first_name = "Matthew"
-Matthew.last_name = "Blagg"
-Matthew.slack_handle = "Matthew B."
-Matthew.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+Matthew = Student("Matthew", "Blagg", "Matthew B.", "C36 - The most awesome cohort in the history of cohorts!")
+# Matthew.first_name = "Matthew"
+# Matthew.last_name = "Blagg"
+# Matthew.slack_handle = "Matthew B."
+# Matthew.cohort = "C36 - The most awesome cohort in the history of cohorts!"
 Cohort_36.add_student(Matthew)
 
-Brant = Student()
-Brant.first_name = "Brant"
-Brant.last_name = "Pippin"
-Brant.slack_handle = "Brant P."
-Brant.cohort = "C39 - The second most awesome cohort in the history of cohorts!"
+Brant = Student("Brant", "Pippin", "Brant P.", "C39 - The second most awesome cohort in the history of cohorts!" )
+# Brant.first_name = "Brant"
+# Brant.last_name = "Pippin"
+# Brant.slack_handle = "Brant P."
+# Brant.cohort = "C39 - The second most awesome cohort in the history of cohorts!"
 Cohort_39.add_student(Brant)
 
 
 
 # Create 3, or more, instructors and assign them to one of the cohorts.
 
-Joe = Instructor()
-Joe.first_name = "Joe"
-Joe.last_name = "Shepherd"
-Joe.slack_handle = "JoeShep"
-Joe.cohort = "C36 - The most awesome cohort in the history of cohorts!"
-Joe.specialty = "Python"
+Joe = Instructor("Python", "Joe", "Shepherd", "JoeShep", "C36 - The most awesome cohort in the history of cohorts!")
+# Joe.first_name = "Joe"
+# Joe.last_name = "Shepherd"
+# Joe.slack_handle = "JoeShep"
+# Joe.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+# Joe.specialty = "Python"
 Cohort_36.add_instructor(Joe)
 
-Jisie = Instructor()
-Jisie.first_name = "Jisie"
-Jisie.last_name = "David"
-Jisie.slack_handle = "JisieD"
-Jisie.cohort = "C36 - The most awesome cohort in the history of cohorts!"
-Jisie.specialty = "Javascript"
+Jisie = Instructor("Javascript", "Jisie", "David", "JisieD", "C36 - The most awesome cohort in the history of cohorts!")
+# Jisie.first_name = "Jisie"
+# Jisie.last_name = "David"
+# Jisie.slack_handle = "JisieD"
+# Jisie.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+# Jisie.specialty = "Javascript"
 Cohort_36.add_instructor(Jisie)
 
 
-Rose = Instructor()
-Rose.first_name = "Rose"
-Rose.last_name = "W"
-Rose.slack_handle = "RoseW"
-Rose.cohort = "C36 - The most awesome cohort in the history of cohorts!"
-Rose.specialty = "Javascript"
+Rose = Instructor("Javascript", "Rose", "W", "RoseW", "C36 - The most awesome cohort in the history of cohorts!")
+# Rose.first_name = "Rose"
+# Rose.last_name = "W"
+# Rose.slack_handle = "RoseW"
+# Rose.cohort = "C36 - The most awesome cohort in the history of cohorts!"
+# Rose.specialty = "Javascript"
 Cohort_36.add_instructor(Rose)
 
 # Have each instructor assign 2 exercises to each of the students.
