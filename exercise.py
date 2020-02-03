@@ -6,6 +6,6 @@ Language of exercise (JavaScript, Python, CSharp, etc.)
 
 '''
 class Exercise: 
-    def __init__(self):
-        self.exercise_name = ""
-        self.language = ""
+    def __init__(self, name, language):
+        self.exercise_name = name
+        self.language = language

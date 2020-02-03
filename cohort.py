@@ -6,8 +6,8 @@ The collection of students in the cohort.
 The collection of instructors in the cohort.
 '''
 class Cohort: 
-    def __init__(self):
-        self.name = ""
+    def __init__(self, name):
+        self.name = name
         self.students = []
         self.instructors = []
 

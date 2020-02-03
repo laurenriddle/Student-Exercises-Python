@@ -2,6 +2,7 @@ import sqlite3
 from student import Student
 from instructor import Instructor
 from cohort import Cohort
+from exercise import Exercise
 
 class StudentExerciseReports():
 
@@ -41,7 +42,8 @@ class StudentExerciseReports():
                 print(f'{student.first_name} {student.last_name} is a student in {student.cohort}. Their Slack handle is {student.slack_handle}.')
 
     def create_instructor(self, cursor, row):
-        print(row[1], row[2], row[3], row[4], row[5])
+        
+        # Change row 4!!!!
         return Instructor(row[4], row[1], row[2], row[3], row[5])
 
 
@@ -71,13 +73,14 @@ class StudentExerciseReports():
 
 
     def create_cohort(self, cursor, row):
-        print(row[1], row[2], row[3], row[4], row[5])
-        return Cohort(row[1], row[1], row[2], row[3], row[5])
+        return Cohort(row[1])
+
 
     def all_cohorts(self):
         """Retrieve all cohorts"""
 
         with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = self.create_cohort
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -89,12 +92,17 @@ class StudentExerciseReports():
             all_Cohorts = db_cursor.fetchall()
 
             for cohort in all_Cohorts:
-                    print(f'This is {cohort[1]}. We are awesome!')
+                print(f'This is {cohort.name}. We are awesome!')
+
+    def create_exercise(self, cursor, row):
+        return Exercise(row[1], row[2])
+
 
     def all_exercises(self):
         """Retrieve all exercises"""
 
         with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = self.create_exercise 
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -107,10 +115,10 @@ class StudentExerciseReports():
             all_Exercises = db_cursor.fetchall()
 
             for exercise in all_Exercises:
-                    print(f'This exercise is called {exercise[1]}. It is written in {exercise[2]}.')
+                    print(f'This exercise is called {exercise.exercise_name}. It is written in {exercise.language}.')
 
 reports = StudentExerciseReports()
-# reports.all_students()
+reports.all_students()
 reports.all_instructors()
-# reports.all_cohorts()
-# reports.all_exercises()
+reports.all_cohorts()
+reports.all_exercises()
