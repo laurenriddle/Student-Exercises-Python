@@ -1,4 +1,7 @@
 import sqlite3
+from student import Student
+from instructor import Instructor
+from cohort import Cohort
 
 class StudentExerciseReports():
 
@@ -7,11 +10,17 @@ class StudentExerciseReports():
     def __init__(self):
         self.db_path = "/Users/laurenriddle/workspace/python/book-one/student-exercises/studentexercises.db"
 
+    def create_student(self, cursor, row):
+        return Student(row[1], row[2], row[3], row[5])
+
+        
+
     def all_students(self):
 
         """Retrieve all students with the cohort name"""
 
         with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = self.create_student
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -29,13 +38,18 @@ class StudentExerciseReports():
             all_students = db_cursor.fetchall()
 
             for student in all_students:
-                print(f'{student[1]} {student[2]} is a student in {student[5]}')
+                print(f'{student.first_name} {student.last_name} is a student in {student.cohort}. Their Slack handle is {student.slack_handle}.')
+
+    def create_instructor(self, cursor, row):
+        print(row[1], row[2], row[3], row[4], row[5])
+        return Instructor(row[4], row[1], row[2], row[3], row[5])
 
 
     def all_instructors(self):
         """Retrieve all instructors with the cohort name"""
 
         with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = self.create_instructor
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -52,8 +66,13 @@ class StudentExerciseReports():
 
             all_Instructors = db_cursor.fetchall()
 
-            for instuctor in all_Instructors:
-                    print(f'{instuctor[1]} {instuctor[2]} is an instructor in {instuctor[5]}')
+            for instructor in all_Instructors:
+                    print(f'{instructor.first_name} {instructor.last_name} is an instructor in {instructor.cohort}. Their slack handle is {instructor.slack_handle}.')
+
+
+    def create_cohort(self, cursor, row):
+        print(row[1], row[2], row[3], row[4], row[5])
+        return Cohort(row[1], row[1], row[2], row[3], row[5])
 
     def all_cohorts(self):
         """Retrieve all cohorts"""
@@ -91,7 +110,7 @@ class StudentExerciseReports():
                     print(f'This exercise is called {exercise[1]}. It is written in {exercise[2]}.')
 
 reports = StudentExerciseReports()
-reports.all_students()
+# reports.all_students()
 reports.all_instructors()
-reports.all_cohorts()
-reports.all_exercises()
+# reports.all_cohorts()
+# reports.all_exercises()
