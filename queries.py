@@ -165,9 +165,47 @@ class StudentExerciseReports():
                 for object in objects["exercises"]:
                     print(f'\t* {object}')
 
+    def all_instructor_assignments(self):
+        """Retrieve all exercises"""
+        assignments = dict()
+        with sqlite3.connect(self.db_path) as conn:
+            db_cursor = conn.cursor()
+
+            db_cursor.execute("""
+            SELECT Exercise_Id, e.Name, i.First_Name, i.Last_Name, i.id
+            FROM 
+            Assignments a 
+            JOIN Exercise e 
+            ON a.Exercise_Id = e.Id 
+            JOIN Instructor i 
+            ON a.Instructor_Id = i.Id;
+            """)
+
+            all_Assigments = db_cursor.fetchall()
+
+            for row in all_Assigments:
+                # exercise_Id = row[0]
+                exercise_name = row[1]
+                # exercise_language = row[2]
+                instructor_Id = row[4]
+                instructor_name = f'{row[2]} {row[3]}'
+                # instructor_name = f'{row[6]} {row[7]}
+
+                if instructor_Id not in assignments:
+                    assignments[instructor_Id] = {"name": instructor_name,
+                    "exercises": {exercise_name} }
+                else: 
+                    assignments[instructor_Id]["exercises"].add(exercise_name)
+            
+            for instructor_Id, objects in assignments.items():
+                print(f'{objects["name"]} has assigned:')
+                for object in objects["exercises"]:
+                    print(f'\t* {object}')
+
 reports = StudentExerciseReports()
 # reports.all_students()
 # reports.all_instructors()
 # reports.all_cohorts()
 # reports.all_exercises()
-reports.all_assignments()
+# reports.all_assignments()
+reports.all_instructor_assignments()
