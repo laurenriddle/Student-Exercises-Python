@@ -151,7 +151,7 @@ class StudentExerciseReports():
                 # exercise_language = row[2]
                 student_Id = row[3]
                 student_name = f'{row[4]} {row[5]}'
-                # instructor_name = f'{row[6]} {row[7]}'
+                # instructor_name = f'{row[6]} {row[7]}
 
                 if student_Id not in assignments:
                     assignments[student_Id] = {"name": student_name,
@@ -160,9 +160,9 @@ class StudentExerciseReports():
                     assignments[student_Id]["exercises"].append(exercise_name)
             
             for student_Id, objects in assignments.items():
-                print(f'{student_Id} is working on:')
-                for object in objects.items():
-                    print(object[1])
+                print(f'{objects["name"]} is working on:')
+                for object in objects["exercises"]:
+                    print(f'\t* {object}')
                 # for exercise in exercises:
                 #     print(f'\t* {exercise}')
 
