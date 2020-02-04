@@ -163,12 +163,6 @@ class StudentExerciseReports():
                 print(f'{objects["name"]} is working on:')
                 for object in objects["exercises"]:
                     print(f'\t* {object}')
-                # for exercise in exercises:
-                #     print(f'\t* {exercise}')
-
-
-            # for assignment in all_Assigments:
-            #         print(f'[]')
 
 reports = StudentExerciseReports()
 # reports.all_students()
