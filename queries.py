@@ -117,9 +117,10 @@ class StudentExerciseReports():
             for exercise in all_Exercises:
                     print(exercise)
 
-    def create_exercise(self, cursor, row):
-        print(f'{row[1]}, {row[2]}')
-    def student_exercises(self):
+    # def create_exercise(self, cursor, row):
+        # print(f'{row[1]}, {row[2]}')
+
+    def all_assignments(self):
         """Retrieve all exercises"""
         assignments = dict()
         with sqlite3.connect(self.db_path) as conn:
@@ -169,4 +170,4 @@ reports = StudentExerciseReports()
 # reports.all_instructors()
 # reports.all_cohorts()
 # reports.all_exercises()
-reports.student_exercises()
+reports.all_assignments()
