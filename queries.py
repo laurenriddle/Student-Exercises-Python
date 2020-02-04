@@ -117,8 +117,60 @@ class StudentExerciseReports():
             for exercise in all_Exercises:
                     print(exercise)
 
+    def create_exercise(self, cursor, row):
+        print(f'{row[1]}, {row[2]}')
+    def student_exercises(self):
+        """Retrieve all exercises"""
+        assignments = dict()
+        with sqlite3.connect(self.db_path) as conn:
+            db_cursor = conn.cursor()
+
+            db_cursor.execute("""
+            SELECT Exercise_Id, 
+            e.Name, 
+            e.Language, 
+            s.Id Student_Id, 
+            s.First_Name, 
+            s.Last_Name , 
+            i.First_Name, 
+            i.Last_Name from 
+            Assignments a 
+            JOIN Exercise e 
+            ON a.Exercise_Id = e.Id 
+            JOIN Student s
+            ON a.Student_Id = s.Id
+            JOIN Instructor i 
+            ON a.Instructor_Id = i.Id
+            """)
+
+            all_Assigments = db_cursor.fetchall()
+
+            for row in all_Assigments:
+                # exercise_Id = row[0]
+                exercise_name = row[1]
+                # exercise_language = row[2]
+                student_Id = row[3]
+                student_name = f'{row[4]} {row[5]}'
+                # instructor_name = f'{row[6]} {row[7]}'
+
+                if student_Id not in assignments:
+                    assignments[student_Id] = {"name": student_name,
+                    "exercises": [exercise_name] }
+                else: 
+                    assignments[student_Id]["exercises"].append(exercise_name)
+            
+            for student_Id, exercises in assignments.items():
+                print(f'{student_Id["name"]} is working on: {exercises}')
+                # for exercise in exercises:
+                #     print(f'\t* {exercise}')
+
+
+            # for assignment in all_Assigments:
+            #         print(f'[]')
+
 reports = StudentExerciseReports()
-reports.all_students()
-reports.all_instructors()
-reports.all_cohorts()
-reports.all_exercises()
+# reports.all_students()
+# reports.all_instructors()
+# reports.all_cohorts()
+# reports.all_exercises()
+reports.student_exercises()
