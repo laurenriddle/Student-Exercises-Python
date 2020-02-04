@@ -159,8 +159,10 @@ class StudentExerciseReports():
                 else: 
                     assignments[student_Id]["exercises"].append(exercise_name)
             
-            for student_Id, exercises in assignments.items():
-                print(f'{student_Id["name"]} is working on: {exercises}')
+            for student_Id, objects in assignments.items():
+                print(f'{student_Id} is working on:')
+                for object in objects.items():
+                    print(object[1])
                 # for exercise in exercises:
                 #     print(f'\t* {exercise}')
 
