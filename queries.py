@@ -11,8 +11,8 @@ class StudentExerciseReports():
     def __init__(self):
         self.db_path = "/Users/laurenriddle/workspace/python/book-one/student-exercises/studentexercises.db"
 
-    def create_student(self, cursor, row):
-        return Student(row[1], row[2], row[3], row[5])
+    # def create_student(self, cursor, row):
+        # return Student(row[1], row[2], row[3], row[5])
 
         
 
@@ -21,7 +21,7 @@ class StudentExerciseReports():
         """Retrieve all students with the cohort name"""
 
         with sqlite3.connect(self.db_path) as conn:
-            conn.row_factory = self.create_student
+            conn.row_factory = lambda cursor, row: Student(row[1], row[2], row[3], row[5])
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -39,19 +39,19 @@ class StudentExerciseReports():
             all_students = db_cursor.fetchall()
 
             for student in all_students:
-                print(f'{student.first_name} {student.last_name} is a student in {student.cohort}. Their Slack handle is {student.slack_handle}.')
+                print(student)
 
-    def create_instructor(self, cursor, row):
+    # def create_instructor(self, cursor, row):
         
         # Change row 4!!!!
-        return Instructor(row[4], row[1], row[2], row[3], row[5])
+        # return Instructor(row[4], row[1], row[2], row[3], row[5])
 
 
     def all_instructors(self):
         """Retrieve all instructors with the cohort name"""
 
         with sqlite3.connect(self.db_path) as conn:
-            conn.row_factory = self.create_instructor
+            conn.row_factory = lambda cursor, row: Instructor(row[4], row[1], row[2], row[3], row[5])
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -69,18 +69,18 @@ class StudentExerciseReports():
             all_Instructors = db_cursor.fetchall()
 
             for instructor in all_Instructors:
-                    print(f'{instructor.first_name} {instructor.last_name} is an instructor in {instructor.cohort}. Their slack handle is {instructor.slack_handle}.')
+                    print(instructor)
 
 
-    def create_cohort(self, cursor, row):
-        return Cohort(row[1])
+    # def create_cohort(self, cursor, row):
+        # return Cohort(row[1])
 
 
     def all_cohorts(self):
         """Retrieve all cohorts"""
 
         with sqlite3.connect(self.db_path) as conn:
-            conn.row_factory = self.create_cohort
+            conn.row_factory = lambda cursor, row: Cohort(row[1])
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -92,17 +92,17 @@ class StudentExerciseReports():
             all_Cohorts = db_cursor.fetchall()
 
             for cohort in all_Cohorts:
-                print(f'This is {cohort.name}. We are awesome!')
+                print(cohort)
 
-    def create_exercise(self, cursor, row):
-        return Exercise(row[1], row[2])
+    # def create_exercise(self, cursor, row):
+        # return Exercise(row[1], row[2])
 
 
     def all_exercises(self):
         """Retrieve all exercises"""
 
         with sqlite3.connect(self.db_path) as conn:
-            conn.row_factory = self.create_exercise 
+            conn.row_factory = lambda cursor, row: Exercise(row[1], row[2]) 
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -115,7 +115,7 @@ class StudentExerciseReports():
             all_Exercises = db_cursor.fetchall()
 
             for exercise in all_Exercises:
-                    print(f'This exercise is called {exercise.exercise_name}. It is written in {exercise.language}.')
+                    print(exercise)
 
 reports = StudentExerciseReports()
 reports.all_students()

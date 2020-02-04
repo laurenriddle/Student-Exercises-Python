@@ -15,3 +15,7 @@ class Cohort:
         self.students.append(name)
     def add_instructor(self, name):
         self.instructors.append(name)
+
+
+    def __repr__(self):
+        return f'This is {self.name}. We are awesome!'

@@ -16,3 +16,5 @@ class Instructor(NSSPerson):
     
     def assign_student_exercise(self, student, exercise):
         student.exercise.append(exercise)
+    def __repr__(self):
+        return f'{self.first_name} {self.last_name} is an instructor in {self.cohort}. Their Slack Handle is {self.slack_handle}.'
